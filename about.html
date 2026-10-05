@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About - Cheaper Brothers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&family=Alumni+Sans+Pinstripe:ital@0;1&family=Bebas+Neue&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+<!-- 请在此处复用上面的导航栏 CSS 样式 -->
+<style>
+body { margin: 0; min-height: 100vh; background-color: #000; color: #fff; display: flex; flex-direction: column; align-items: center; }
+#font-loader { font-family: "Manufacturing Consent", system-ui; position: absolute; opacity: 0; pointer-events: none; }
+footer { margin-top: auto; padding: 30px; font-family: "Noto Serif TC", serif; font-size: 0.9rem; opacity: 0.8; letter-spacing: 1px; text-align: center; }
+/* About 页面专属样式 */
+.header-canvas { margin: 15vh 0 3vh 0; }
+.about-content {
+    max-width: 600px;
+    width: 85%;
+    font-family: "Noto Serif TC", serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: justify;
+    margin-bottom: 10vh;
+}
+.about-content p {
+    margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+
+<!-- 此处插入刚才的 nav-wrapper HTML 代码 -->
+
+<div id="font-loader">Force Font Load</div>
+
+<div class="header-canvas">
+    <canvas id="fuzzy-title-about"></canvas>
+</div>
+
+<div class="about-content">
+    <p>We are Cheaper Brothers Co., a collective dedicated to pushing the boundaries of digital and physical design.</p>
+    <p>Established with a focus on minimalism, interactive experiences, and robust engineering, our work spans across application development, visual arts, and experimental web structures.</p>
+    <p>This space serves as an archive of our ongoing projects and a playground for new concepts.</p>
+</div>
+
+<footer>Cheaper Brothers Co. 廉兄集团</footer>
+
+<script>
+// 复用您的 FuzzyText 类代码
+// ...
+
+const commonConfig = { fontFamily: "Manufacturing Consent", fontWeight: 400, color: '#ffffff', baseIntensity: 0.15, hoverIntensity: 0.5, fuzzRange: 30 };
+new FuzzyText('fuzzy-nav-icon', { ...commonConfig, text: "■", fontSize: 40, fuzzRange: 15, baseIntensity: 0.2 });
+// 渲染 ABOUT 标题
+new FuzzyText('fuzzy-title-about', { ...commonConfig, text: "ABOUT US", fontSize: 70 });
+
+// 复用 Nav 逻辑代码
+// ...
+</script>
+</body>
+</html>
