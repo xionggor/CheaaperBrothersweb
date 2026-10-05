@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art - Cheaper Brothers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&family=Alumni+Sans+Pinstripe:ital@0;1&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+<style>
+/* 基础与导航 */
+body { margin: 0; min-height: 100vh; background-color: #000; display: flex; flex-direction: column; align-items: center; overflow-x: hidden;}
+#font-loader { font-family: "Manufacturing Consent", system-ui; position: absolute; opacity: 0; pointer-events: none; }
+footer { margin-top: auto; padding: 30px; font-family: "Noto Serif TC", serif; font-size: 0.9rem; color: #fff; opacity: 0.8; letter-spacing: 1px; text-align: center; width: 100%;}
+footer a { color: inherit; text-decoration: none; transition: opacity 0.3s; }
+footer a:hover { opacity: 1; }
+:root { --nav-bg: #ffffff; --nav-text: #000000; --primary-font: "Alumni Sans Pinstripe", sans-serif; --nav-transition: 0.5s; --nav-delay: 0.08s; }
+.nav-wrapper { position: fixed; top: 25px; right: 25px; z-index: 9999; display: flex; flex-direction: column; align-items: flex-end; padding-bottom: 40px; }
+.nav-trigger { width: 26px; height: 26px; background-color: transparent; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+#fuzzy-nav-icon { width: 100%; height: 100%; }
+.menu-list { margin-top: 8px; display: flex; flex-direction: column; gap: 3px; width: 210px; pointer-events: none; }
+.menu-bar { background-color: var(--nav-bg); border-radius: 3px; padding: 1px 12px; color: var(--nav-text); text-decoration: none; cursor: pointer; transform: translateY(-15px); opacity: 0; transition: all var(--nav-transition) cubic-bezier(0.23, 1, 0.32, 1); display: flex; flex-direction: column; justify-content: center; }
+.menu-bar:nth-child(1) { transition-delay: calc(var(--nav-delay) * 2); }
+.menu-bar:nth-child(2) { transition-delay: calc(var(--nav-delay) * 1); }
+.menu-bar:nth-child(3) { transition-delay: 0s; }
+.nav-wrapper.active .menu-list { pointer-events: auto; }
+.nav-wrapper.active .menu-bar { transform: translateY(0); opacity: 1; }
+.nav-wrapper.active .menu-bar:nth-child(1) { transition-delay: 0s; }
+.nav-wrapper.active .menu-bar:nth-child(2) { transition-delay: var(--nav-delay); }
+.nav-wrapper.active .menu-bar:nth-child(3) { transition-delay: calc(var(--nav-delay) * 2); }
+.bar-title { font-family: var(--primary-font); font-size: 2.6rem; font-weight: 400; text-transform: uppercase; display: flex; align-items: center; line-height: 0.8; margin: 0; white-space: nowrap; height: 45px;}
+
+/* Art 动效照片墙 */
+.header-canvas { margin: 10vh 0 5vh 0; }
+.gallery-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;
+    width: 90%; max-width: 1200px; margin-bottom: 8vh;
+}
+.gallery-item {
+    position: relative; overflow: hidden; border-radius: 6px; cursor: pointer;
+    background-color: #111; aspect-ratio: 4/3;
+    opacity: 0; /* 初始隐藏，等待动画 */
+    animation: fadeInUp 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+}
+
+/* 交错进场延迟 */
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.2s; }
+.gallery-item:nth-child(3) { animation-delay: 0.3s; }
+.gallery-item:nth-child(4) { animation-delay: 0.4s; }
+.gallery-item:nth-child(5) { animation-delay: 0.5s; }
+.gallery-item:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* 悬停特效：恢复彩色 + 缩放 + 微倾斜 */
+.gallery-item img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    filter: grayscale(100%) brightness(0.8);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+}
+.gallery-item:hover img {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.08) rotate(1.5deg);
+}
+</style>
+</head>
+<body>
+
+<div class="nav-wrapper" id="navWrapper">
+    <div class="nav-trigger" id="navTrigger"><canvas id="fuzzy-nav-icon"></canvas></div>
+    <div class="menu-list">
+        <a href="apps.html" class="menu-bar"><div class="bar-title">APPS</div></a>
+        <a href="art.html" class="menu-bar"><div class="bar-title">Art</div></a>
+        <a href="about.html" class="menu-bar"><div class="bar-title">About</div></a>
+    </div>
+</div>
+
+<div id="font-loader">Force Font Load</div>
+<div class="header-canvas"><canvas id="fuzzy-title-art"></canvas></div>
+
+<div class="gallery-grid">
+    <!-- 替换为您的实际照片地址 -->
+    <div class="gallery-item"><img src="https://picsum.photos/600/400?random=1" alt="Art"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/600/400?random=2" alt="Art"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/600/400?random=3" alt="Art"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/600/400?random=4" alt="Art"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/600/400?random=5" alt="Art"></div>
+    <div class="gallery-item"><img src="https://picsum.photos/600/400?random=6" alt="Art"></div>
+</div>
+
+<footer><a href="index.html">Cheaper Brothers Co. 廉兄集团</a></footer>
+
+<script>
+class FuzzyText {
+  constructor(id, opt={}){ this.c=document.getElementById(id);if(!this.c)return;this.t=opt.text||"";this.sz=opt.fontSize||80;this.fw=opt.fontWeight||400;this.ff=opt.fontFamily||'sans-serif';this.col=opt.color||'#fff';this.bI=opt.baseIntensity||0.18;this.hI=opt.hoverIntensity||0.5;this.fR=opt.fuzzRange||30;this.eH=opt.enableHover!==false;this.ctx=this.c.getContext('2d');this.off=document.createElement('canvas');this.oCtx=this.off.getContext('2d');this.isH=false;this.init();}
+  async init(){try{await document.fonts.load(`400 80px "${this.ff}"`);}catch(e){}await document.fonts.ready;setTimeout(()=>{this.rz();this.anim();},100);if(this.eH){this.c.addEventListener('mousemove',()=>this.isH=true);this.c.addEventListener('mouseleave',()=>this.isH=false);}window.addEventListener('resize',()=>this.rz());}
+  rz(){const sm=this.c.id==='fuzzy-nav-icon';let rs=sm?this.sz:(window.innerWidth<600?this.sz*0.6:this.sz);this.oCtx.font=`${this.fw} ${rs}px "${this.ff}"`;this.off.width=Math.ceil(this.oCtx.measureText(this.t).width)+10;this.off.height=Math.ceil(rs*1.5);this.oCtx.font=`${this.fw} ${rs}px "${this.ff}"`;this.oCtx.fillStyle=this.col;this.oCtx.textBaseline='middle';this.oCtx.fillText(this.t,5,this.off.height/2);this.c.width=this.off.width+this.fR*2;this.c.height=this.off.height;if(sm){this.c.style.width='35px';this.c.style.height='35px';}}
+  anim(){this.ctx.clearRect(0,0,this.c.width,this.c.height);const I=this.isH?this.hI:this.bI;for(let j=0;j<this.off.height;j++){const dx=Math.floor(I*(Math.random()-0.5)*this.fR);this.ctx.drawImage(this.off,0,j,this.off.width,1,dx+this.fR,j,this.off.width,1);}requestAnimationFrame(()=>this.anim());}
+}
+const conf = { fontFamily: "Manufacturing Consent", color: '#fff', baseIntensity: 0.15, hoverIntensity: 0.5, fuzzRange: 30 };
+new FuzzyText('fuzzy-nav-icon', { ...conf, text: "■", fontSize: 40, fuzzRange: 15, baseIntensity: 0.2 });
+new FuzzyText('fuzzy-title-art', { ...conf, text: "ART", fontSize: 80 });
+
+const wr = document.getElementById('navWrapper');
+document.getElementById('navTrigger').addEventListener('mouseenter', ()=>wr.classList.add('active'));
+wr.addEventListener('mouseleave', ()=>wr.classList.remove('active'));
+</script>
+</body>
+</html>
