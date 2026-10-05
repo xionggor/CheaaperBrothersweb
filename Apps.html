@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps - Cheaper Brothers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manufacturing+Consent&family=Alumni+Sans+Pinstripe:ital@0;1&family=Bebas+Neue&family=Noto+Serif+TC:wght@400&display=swap" rel="stylesheet">
+<!-- 请在此处复用上面的导航栏 CSS 样式 -->
+<style>
+body { margin: 0; height: 100vh; background-color: #000; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+#font-loader { font-family: "Manufacturing Consent", system-ui; position: absolute; opacity: 0; pointer-events: none; }
+footer { position: absolute; bottom: 30px; font-family: "Noto Serif TC", serif; font-size: 0.9rem; opacity: 0.8; letter-spacing: 1px; text-align: center; width: 100%;}
+/* Apps 页面专属样式 */
+.apps-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    z-index: 10;
+}
+.app-item {
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+.app-item:hover {
+    transform: scale(1.1);
+}
+.app-title {
+    font-family: "Manufacturing Consent", sans-serif;
+    font-size: 4rem;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 0 0 10px rgba(255,255,255,0);
+    transition: text-shadow 0.3s ease;
+}
+.app-item:hover .app-title {
+    text-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+.app-desc {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 1.5rem;
+    color: #aaa;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+</style>
+</head>
+<body>
+
+<!-- 此处插入刚才的 nav-wrapper HTML 代码 -->
+
+<div id="font-loader">Force Font Load</div>
+
+<div class="apps-container">
+    <a href="PokerTracker.html" class="app-item">
+        <div class="app-title">POKER TRACKER</div>
+        <div class="app-desc">STATISTICS & ANALYSIS</div>
+    </a>
+    <a href="lottery.html" class="app-item">
+        <div class="app-title">LOTTERY</div>
+        <div class="app-desc">LUCK GENERATOR</div>
+    </a>
+    <a href="https://xionggor.dpdns.org/" target="_blank" class="app-item">
+        <div class="app-title">TP EMAIL</div>
+        <div class="app-desc">SECURE INBOX</div>
+    </a>
+</div>
+
+<footer>Cheaper Brothers Co. 廉兄集团</footer>
+
+<!-- 此处插入刚才的 FuzzyText 和 Nav 交互 JS 代码 -->
+</body>
+</html>
